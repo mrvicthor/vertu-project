@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;600;700&family=Manrope:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  body {
+    font-family: "Livvic", sans-serif;
+  }
+}
+
+@layer components {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+  }
+
+  .sidebar {
+    inset: 0 79px 0 0;
+    transform: translateX(120%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.active {
+    transform: translateX(0%);
+  }
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
