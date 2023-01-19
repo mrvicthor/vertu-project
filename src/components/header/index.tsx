@@ -10,15 +10,17 @@ import { useState, useRef } from "react";
 import { SearchBar, Sidebar } from "../index";
 import { useInView } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { useWindowSize } from "../../hooks/use-Window-Size";
 
 const Header = () => {
+  const { width } = useWindowSize();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [saved, setSaved] = useState<boolean>(false);
   const [showSearchBar, setShowSearchBar] = useState<boolean>(false);
   return (
-    <header className="py-4 bg-[#ffffff] shadow-md">
+    <header className="py-4 bg-[#ffffff] shadow-md relative">
       {sidebarOpen && (
         <div
           className="fixed top-0 bottom-0 left-0 right-0 overlay z-10 opacity-40"
@@ -28,18 +30,25 @@ const Header = () => {
 
       <Sidebar closeSidebar={setSidebarOpen} open={sidebarOpen} />
 
-      <nav className="px-6 lg:max-w-[69rem] lg:mx-auto lg:flex lg:px-0">
-        <div
-          className={`${
-            showSearchBar ? "iSactive" : ""
-          } flex gap-4 items-center fixed py-3 mobile-searchbar`}
-        >
-          <div onClick={() => setShowSearchBar(false)}>
-            <AiOutlineClose size={24} />
+      <nav
+        ref={ref}
+        className="px-6 lg:max-w-[69rem] lg:mx-auto lg:flex lg:px-0"
+      >
+        {showSearchBar ? (
+          <div
+            style={{
+              transform: isInView ? "none" : "translateX(-200px)",
+              opacity: isInView ? 1 : 0,
+              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+            }}
+            className={` flex gap-4 items-center `}
+          >
+            <div onClick={() => setShowSearchBar(false)}>
+              <AiOutlineClose size={24} />
+            </div>
+            <SearchBar />
           </div>
-          <SearchBar />
-        </div>
-        {showSearchBar ? null : (
+        ) : (
           <div className="flex justify-between items-center lg:gap-4">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -52,8 +61,11 @@ const Header = () => {
               <span className="bars"></span>
               <span className="bars"></span>
             </button>
-            <a
-              href="/"
+            <NavLink
+              to="/"
+              style={({ isActive }) => {
+                return isActive ? { color: "#06C4CC" } : {};
+              }}
               className="mr-auto w-[6rem] flex items-center overflow-hidden"
             >
               <img
@@ -61,54 +73,69 @@ const Header = () => {
                 alt="vertu-motors-logo"
                 className="object-cover"
               />
-            </a>
+            </NavLink>
             <div className="">
               <ul className="hidden lg:flex lg:gap-4">
                 <li className="nav-link">
                   <NavLink
+                    style={({ isActive }) => {
+                      return isActive ? { color: "#06C4CC" } : {};
+                    }}
                     to="/newcars"
                     className="flex items-center gap-2 font-semibold text-xs hover:rounded-full hover:bg-[#ECF3FC] py-2 px-3"
                   >
                     New cars
-                    <span>
-                      <MdOutlineKeyboardArrowDown className="icon" />
+                    <span className="icon">
+                      <MdOutlineKeyboardArrowDown />
                     </span>
                   </NavLink>
                 </li>
                 <li className="nav-link">
                   <NavLink
+                    style={({ isActive }) => {
+                      return isActive ? { color: "#06C4CC" } : {};
+                    }}
                     to="/usedcars"
                     className="flex items-center gap-2 font-semibold text-xs hover:rounded-full hover:bg-[#ECF3FC] py-2 px-3"
                   >
                     Used cars
-                    <span>
-                      <MdOutlineKeyboardArrowDown className="icon" />
+                    <span className="icon">
+                      <MdOutlineKeyboardArrowDown />
                     </span>
                   </NavLink>
                 </li>
                 <li className="nav-link">
                   <NavLink
+                    style={({ isActive }) => {
+                      return isActive ? { color: "#06C4CC" } : {};
+                    }}
                     to="/servicing"
                     className="flex items-center gap-2 font-semibold text-xs hover:rounded-full hover:bg-[#ECF3FC] py-2 px-3"
                   >
                     Servicing
-                    <span>
-                      <MdOutlineKeyboardArrowDown className="icon" />
+                    <span className="icon">
+                      <MdOutlineKeyboardArrowDown />
                     </span>
                   </NavLink>
                 </li>
                 <li className="nav-link">
                   <NavLink
+                    style={({ isActive }) => {
+                      return isActive ? { color: "#06C4CC" } : {};
+                    }}
                     to="/commercials"
                     className="flex items-center gap-2 font-semibold text-xs hover:rounded-full hover:bg-[#ECF3FC] py-2 px-3"
                   >
                     Commercials
-                    <span>
-                      <MdOutlineKeyboardArrowDown className="icon" />
+                    <span className="icon">
+                      <MdOutlineKeyboardArrowDown />
                     </span>
                   </NavLink>
                 </li>
                 <NavLink
+                  style={({ isActive }) => {
+                    return isActive ? { color: "#06C4CC" } : {};
+                  }}
                   to="/motability"
                   className="flex  items-center font-semibold text-xs hover:rounded-full hover:bg-[#ECF3FC] py-2 px-3"
                 >
@@ -116,36 +143,48 @@ const Header = () => {
                 </NavLink>
               </ul>
             </div>
-            <div className="hidden lg:flex">
-              <SearchBar />
+            <div className="hidden lg:flex ml-4">
+              <SearchBar style="py-1" icon={10} />
             </div>
-            <div className="flex gap-2 items-center overflow-hidden ">
+            <div className="flex gap-3 items-center overflow-hidden ">
               <div onClick={() => setShowSearchBar(true)} className="lg:hidden">
                 <span className="block">
                   <CiSearch size={30} />
                 </span>
               </div>
-              <div>
-                <span className="hidden">
-                  <HiOutlineLocationMarker size={30} />
+              <div className="cursor-pointer flex flex-col items-center hover:text-[#06C4CC]">
+                <span className="hidden  lg:block ">
+                  {width !== undefined && (
+                    <HiOutlineLocationMarker size={width <= 768 ? 24 : 16} />
+                  )}
                 </span>
-                <p className="hidden">find us</p>
+                <p className="hidden lg:block text-xs">find us</p>
               </div>
-              <div onClick={() => setSaved(!saved)}>
+              <div
+                onClick={() => setSaved(!saved)}
+                className="cursor-pointer flex flex-col items-center hover:text-[#06C4CC]"
+              >
                 <span className="block">
-                  {saved ? <FaHeart size={30} /> : <FaRegHeart size={30} />}
+                  {width !== undefined &&
+                    (saved ? (
+                      <FaHeart size={width <= 768 ? 24 : 16} />
+                    ) : (
+                      <FaRegHeart size={width <= 768 ? 24 : 16} />
+                    ))}
                 </span>
-                <p className="hidden">save</p>
+                <p className="hidden lg:block text-xs">save</p>
               </div>
-              <div>
+              <div className="cursor-pointer flex flex-col items-center hover:text-[#06C4CC]">
                 <span className="block">
-                  <BiUser size={30} />
+                  {width !== undefined && (
+                    <BiUser size={width <= 768 ? 24 : 16} />
+                  )}
                 </span>
-                <p className="hidden">login</p>
+                <p className="hidden lg:block text-xs">login</p>
               </div>
-              <div>
+              <div className="cursor-pointer">
                 <span className="block md:hidden">
-                  <SlPhone size={30} />
+                  <SlPhone size={24} />
                 </span>
               </div>
             </div>

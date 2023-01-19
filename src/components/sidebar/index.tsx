@@ -15,7 +15,7 @@ const Sidebar = ({ closeSidebar, open }: IProps) => {
       } fixed h-screen sidebar bg-[#ffffff] z-[10000]`}
     >
       <div className="px-6 py-3 grid grid-cols-1 divide-y">
-        <div className="flex items-center justify-between py-3">
+        <div className="flex items-center justify-between py-4">
           <div />
           <p className="font-semibold">Menu</p>
           <div>

@@ -69,7 +69,7 @@
     background-color: rgba(0, 0, 0, 0.6);
   }
 
-  .mobile-searchbar {
+  /* .mobile-searchbar {
     transform: translateX(150%);
     width: 86%;
     transition: transform 350ms ease-in-out;
@@ -77,10 +77,13 @@
 
   .mobile-searchbar.iSactive {
     transform: translateX(0%);
+  } */
+  .nav-link.icon {
+    transition: 0.5s linear;
   }
 
   .nav-link:hover .icon {
-    color: crimson;
-    transform: rotateX(360deg);
+    color: #06c4cc;
+    transform: rotate(180deg) scale(1.2);
   }
 }
