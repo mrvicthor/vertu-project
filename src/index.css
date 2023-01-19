@@ -51,10 +51,10 @@
     transition: 0.4s;
   }
 
-  .hamburger:hover span:nth-child(3) {
+  /* .hamburger:hover span:nth-child(3) {
     transform: translateX(10px);
     background: #ecf3fc;
-  }
+  } */
 
   .sidebar {
     inset: 0 79px 0 0;
