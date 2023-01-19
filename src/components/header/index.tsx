@@ -1,10 +1,9 @@
-import VertuLogo from "../../assets/vertu-motors.png";
+import VertuLogo from "../../assets/vertu-logo.png";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BiUser } from "react-icons/bi";
 import { CiSearch } from "react-icons/ci";
 import { SlPhone } from "react-icons/sl";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { FiMenu } from "react-icons/fi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useRef } from "react";
@@ -19,7 +18,7 @@ const Header = () => {
   const [saved, setSaved] = useState<boolean>(false);
   const [showSearchBar, setShowSearchBar] = useState<boolean>(false);
   return (
-    <header className="h-[5.625rem] bg-[#ffffff] shadow-md lg:h-[5rem]">
+    <header className="py-4 bg-[#ffffff] shadow-md">
       {sidebarOpen && (
         <div
           className="fixed top-0 bottom-0 left-0 right-0 overlay z-10 opacity-40"
@@ -29,7 +28,7 @@ const Header = () => {
 
       <Sidebar closeSidebar={setSidebarOpen} open={sidebarOpen} />
 
-      <div className="px-6 lg:max-w-[69rem] lg:mx-auto lg:flex lg:px-0">
+      <nav className="px-6 lg:max-w-[69rem] lg:mx-auto lg:flex lg:px-0">
         <div
           className={`${
             showSearchBar ? "iSactive" : ""
@@ -44,26 +43,26 @@ const Header = () => {
           <div className="flex justify-between items-center lg:gap-4">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="w-[2rem] h-[1.0625rem] cursor-pointer border-[0] outline-0 md:hidden"
-              aria-controls="primary__nav"
+              className="hamburger block relative cursor-pointer md:hidden"
             >
               <span className="sr-only" aria-expanded="false">
                 Menu
               </span>
-
-              <FiMenu size={24} width={24} />
+              <span className="bars"></span>
+              <span className="bars"></span>
+              <span className="bars"></span>
             </button>
             <a
               href="/"
-              className="mr-auto w-[9rem]  flex items-center overflow-hidden"
+              className="mr-auto w-[6rem] flex items-center overflow-hidden"
             >
               <img
                 src={VertuLogo}
                 alt="vertu-motors-logo"
-                className="object-contain w-full max-w-[9rem]"
+                className="object-cover"
               />
             </a>
-            <nav className="">
+            <div className="">
               <ul className="hidden lg:flex lg:gap-4">
                 <li className="nav-link">
                   <NavLink
@@ -116,43 +115,43 @@ const Header = () => {
                   Motability
                 </NavLink>
               </ul>
-            </nav>
+            </div>
             <div className="hidden lg:flex">
               <SearchBar />
             </div>
             <div className="flex gap-2 items-center overflow-hidden ">
               <div onClick={() => setShowSearchBar(true)} className="lg:hidden">
                 <span className="block">
-                  <CiSearch size={24} />
+                  <CiSearch size={34} />
                 </span>
               </div>
               <div>
-                <span className="block">
-                  <HiOutlineLocationMarker size={24} />
+                <span className="hidden">
+                  <HiOutlineLocationMarker size={34} />
                 </span>
                 <p className="hidden">find us</p>
               </div>
               <div onClick={() => setSaved(!saved)}>
                 <span className="block">
-                  {saved ? <FaHeart size={24} /> : <FaRegHeart size={24} />}
+                  {saved ? <FaHeart size={34} /> : <FaRegHeart size={34} />}
                 </span>
                 <p className="hidden">save</p>
               </div>
               <div>
                 <span className="block">
-                  <BiUser size={24} />
+                  <BiUser size={34} />
                 </span>
                 <p className="hidden">login</p>
               </div>
               <div>
                 <span className="block md:hidden">
-                  <SlPhone size={24} />
+                  <SlPhone size={34} />
                 </span>
               </div>
             </div>
           </div>
         )}
-      </div>
+      </nav>
     </header>
   );
 };
