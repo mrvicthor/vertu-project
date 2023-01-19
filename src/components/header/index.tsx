@@ -122,30 +122,30 @@ const Header = () => {
             <div className="flex gap-2 items-center overflow-hidden ">
               <div onClick={() => setShowSearchBar(true)} className="lg:hidden">
                 <span className="block">
-                  <CiSearch size={34} />
+                  <CiSearch size={30} />
                 </span>
               </div>
               <div>
                 <span className="hidden">
-                  <HiOutlineLocationMarker size={34} />
+                  <HiOutlineLocationMarker size={30} />
                 </span>
                 <p className="hidden">find us</p>
               </div>
               <div onClick={() => setSaved(!saved)}>
                 <span className="block">
-                  {saved ? <FaHeart size={34} /> : <FaRegHeart size={34} />}
+                  {saved ? <FaHeart size={30} /> : <FaRegHeart size={30} />}
                 </span>
                 <p className="hidden">save</p>
               </div>
               <div>
                 <span className="block">
-                  <BiUser size={34} />
+                  <BiUser size={30} />
                 </span>
                 <p className="hidden">login</p>
               </div>
               <div>
                 <span className="block md:hidden">
-                  <SlPhone size={34} />
+                  <SlPhone size={30} />
                 </span>
               </div>
             </div>
