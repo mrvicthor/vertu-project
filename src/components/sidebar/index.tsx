@@ -1,5 +1,6 @@
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 interface IProps {
   closeSidebar: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,47 +10,87 @@ interface IProps {
 const Sidebar = ({ closeSidebar, open }: IProps) => {
   return (
     <section
-      className={`${open ? "active" : ""} fixed h-screen sidebar bg-green-300`}
+      className={`${
+        open ? "active" : ""
+      } fixed h-screen sidebar bg-[#ffffff] z-[10000]`}
     >
-      <div className="px-6">
-        <div className="flex items-center justify-between">
+      <div className="px-6 py-3 grid grid-cols-1 divide-y">
+        <div className="flex items-center justify-between py-3">
           <div />
-          <p>Menu</p>
+          <p className="font-semibold">Menu</p>
           <div>
             <AiOutlineClose size={24} onClick={() => closeSidebar(false)} />
           </div>
         </div>
-        <a>
-          <p>New Cars</p>
+        <NavLink
+          to="/newcars"
+          className="flex justify-between items-center py-3"
+        >
+          <p className="font-semibold">New Cars</p>
           <MdOutlineKeyboardArrowDown />
-        </a>
-        <a>
-          <p>Used Cars</p>
+        </NavLink>
+        <NavLink
+          to="/usedcars"
+          className="flex justify-between items-center py-3"
+        >
+          <p className="font-semibold">Used Cars</p>
           <MdOutlineKeyboardArrowDown />
-        </a>
-        <a>
-          <p>Servicing</p>
+        </NavLink>
+        <NavLink
+          to="/servicing"
+          className="flex justify-between items-center py-3"
+        >
+          <p className="font-semibold">Servicing</p>
           <MdOutlineKeyboardArrowDown />
-        </a>
-        <a>
-          <p>Vans</p>
+        </NavLink>
+        <NavLink to="/vans" className="flex justify-between items-center py-3">
+          <p className="font-semibold">Vans</p>
           <MdOutlineKeyboardArrowDown />
-        </a>
-        <a>
-          <p>Electric Cars</p>
+        </NavLink>
+        <NavLink
+          to="/electriccars"
+          className="flex justify-between items-center py-3"
+        >
+          <p className="font-semibold">Electric Cars</p>
           <MdOutlineKeyboardArrowDown />
-        </a>
-        <a>
-          <p>Motability</p>
+        </NavLink>
+        <NavLink
+          to="/motability"
+          className="flex justify-between items-center py-3"
+        >
+          <p className="font-semibold">Motability</p>
           <MdOutlineKeyboardArrowDown />
-        </a>
-        <a>Motorcycles</a>
-        <a>Buy Online</a>
-        <a>Sell My Car</a>
-        <a>News</a>
-        <a>contact us</a>
-        <a>investor</a>
-        <a>careers</a>
+        </NavLink>
+        <NavLink
+          to="/motorcycles"
+          className="flex items-center py-3 font-semibold"
+        >
+          Motorcycles
+        </NavLink>
+        <NavLink
+          to="/buyonline"
+          className="flex items-center py-3 font-semibold"
+        >
+          Buy Online
+        </NavLink>
+        <NavLink to="/sellCar" className="flex items-center py-3 font-semibold">
+          Sell My Car
+        </NavLink>
+        <NavLink to="/news" className="flex items-center py-3 font-semibold">
+          News
+        </NavLink>
+        <NavLink to="/contact" className="flex items-center py-3 font-semibold">
+          contact us
+        </NavLink>
+        <NavLink
+          to="/investor"
+          className="flex items-center py-3 font-semibold"
+        >
+          investor
+        </NavLink>
+        <NavLink to="/careers" className="flex items-center py-3 font-semibold">
+          careers
+        </NavLink>
       </div>
     </section>
   );
