@@ -1,7 +1,9 @@
+import { Banner } from "../index";
+
 const Home = () => {
   return (
     <section>
-      <h1>Home</h1>
+      <Banner />
     </section>
   );
 };

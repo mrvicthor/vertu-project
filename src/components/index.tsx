@@ -9,8 +9,11 @@ import Vans from "./vans";
 import ElectricCars from "./electriccars";
 import Motability from "./motability";
 import MotorCycles from "./motorcycles";
+import Banner from "./banner";
+import Button from "./button";
 
 export {
+  Button,
   Header,
   SearchBar,
   Sidebar,
@@ -22,4 +25,5 @@ export {
   ElectricCars,
   Motability,
   MotorCycles,
+  Banner,
 };
