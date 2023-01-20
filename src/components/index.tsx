@@ -11,6 +11,8 @@ import Motability from "./motability";
 import MotorCycles from "./motorcycles";
 import Banner from "./banner";
 import Button from "./button";
+import Cards from "./cards";
+import Card from "./card";
 
 export {
   Button,
@@ -26,4 +28,6 @@ export {
   Motability,
   MotorCycles,
   Banner,
+  Cards,
+  Card,
 };

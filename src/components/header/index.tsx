@@ -149,11 +149,11 @@ const Header = () => {
             <div className="flex gap-3 items-center overflow-hidden ">
               <div onClick={() => setShowSearchBar(true)} className="lg:hidden">
                 <span className="block">
-                  <CiSearch size={30} />
+                  <CiSearch size={24} />
                 </span>
               </div>
-              <div className="cursor-pointer flex flex-col items-center hover:text-[#06C4CC]">
-                <span className="hidden  lg:block ">
+              <div className="hidden cursor-pointer lg:flex lg:flex-col lg:items-center hover:text-[#06C4CC]">
+                <span className="block ">
                   {width !== undefined && (
                     <HiOutlineLocationMarker size={width <= 768 ? 24 : 16} />
                   )}
