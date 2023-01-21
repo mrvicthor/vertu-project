@@ -5,7 +5,7 @@ import { Button } from "../";
 const Banner = () => {
   const { width } = useWindowSize();
   return (
-    <section>
+    <section className="mt-[4.49rem]">
       <div className="relative">
         {width !== undefined && (
           <img

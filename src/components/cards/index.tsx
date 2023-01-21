@@ -1,6 +1,10 @@
 import m50Image from "../../assets/Trim-01.jpg";
 import mSportImage from "../../assets/Trim-02.jpg";
 import sportImage from "../../assets/Trim-03.jpg";
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
 import { Card } from "../";
 
 const cars = [
@@ -51,10 +55,10 @@ const cars = [
 
 const Cards = () => {
   return (
-    <section>
-      <div className="px-6 py-12">
+    <section className="">
+      <div className="px-6 py-12 lg:max-w-[69rem] lg:mx-auto lg:px-0">
         <h2 className="font-bold text-3xl">BMW i4 trims</h2>
-        <div className="mt-8 grid gap-8">
+        <div className="mt-8 grid gap-6 lg:grid-cols-3 lg:h-[24rem] lg:gap-4 lg:items-stretch">
           {cars.map((car) => (
             <Card car={car} />
           ))}

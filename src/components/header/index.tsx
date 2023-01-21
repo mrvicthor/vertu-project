@@ -20,7 +20,7 @@ const Header = () => {
   const [saved, setSaved] = useState<boolean>(false);
   const [showSearchBar, setShowSearchBar] = useState<boolean>(false);
   return (
-    <header className="py-4 bg-[#ffffff] shadow-md relative">
+    <header className="py-4 bg-[#ffffff] shadow-md fixed top-0 w-full z-[200]">
       {sidebarOpen && (
         <div
           className="fixed top-0 bottom-0 left-0 right-0 overlay z-10 opacity-40"
