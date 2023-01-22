@@ -6,13 +6,13 @@ interface CardProps {
 }
 
 const Card = ({ car }: CardProps) => {
-  const { id, image, name, price, features } = car;
+  const { image, name, price, features } = car;
   return (
-    <div key={id} className="rounded-[20px] border card px-6 pb-8 lg:h-[24rem]">
+    <div className="rounded-[20px] border card px-6 pb-8 lg:h-[24rem] lg:w-[21.6rem] cursor-pointer group/car lg:pt-4">
       <img
         src={image}
         alt={name}
-        className="lg:h-[10rem] w-full object-cover"
+        className="lg:h-[10rem] w-full object-cover group-hover/car:scale-110 duration-700"
       />
       <article className="">
         <h3 className="font-bold text-3xl lg:text-xl">{name}</h3>

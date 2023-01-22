@@ -182,8 +182,8 @@ const Header = () => {
                 </span>
                 <p className="hidden lg:block text-xs">login</p>
               </div>
-              <div className="cursor-pointer">
-                <span className="block md:hidden">
+              <div className="cursor-pointer lg:hidden">
+                <span className="block lg:hidden">
                   <SlPhone size={24} />
                 </span>
               </div>
