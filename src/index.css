@@ -101,4 +101,8 @@
   .buttons:hover > * {
     scale: 1.2;
   }
+
+  .suggestion-text {
+    max-width: 50ch;
+  }
 }

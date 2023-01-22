@@ -14,7 +14,7 @@ const Card = ({ car }: CardProps) => {
         alt={name}
         className="lg:h-[10rem] w-full object-cover group-hover/car:scale-110 duration-700"
       />
-      <article className="">
+      <article className="pt-4 lg:pt-0">
         <h3 className="font-bold text-3xl lg:text-xl">{name}</h3>
         <p className="text-lg mt-4 font-normal capitalize lg:text-sm lg:mt-2">
           from {convertCurrency(price)}

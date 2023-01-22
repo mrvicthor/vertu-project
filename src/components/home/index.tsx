@@ -1,11 +1,13 @@
-import { Banner, Cards } from "../index";
+import { Banner, Cards, Suggestion, Footer } from "../index";
 
 const Home = () => {
   return (
-    <section>
+    <>
       <Banner />
       <Cards />
-    </section>
+      <Suggestion />
+      <Footer />
+    </>
   );
 };
 export default Home;

@@ -24,7 +24,7 @@ const Banner = () => {
           </p>
 
           <Button
-            href="book-test"
+            href="/book-test"
             title="Book a test drive"
             style="bg-[#15f4ee] text-center py-4 block rounded-md cursor-pointer text-[#040C0C] font-semibold text-lg lg:w-[9rem] lg:text-sm lg:py-3 hover:text-[#15f4ee] hover:bg-[#040C0C]"
           />

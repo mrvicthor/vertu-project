@@ -13,6 +13,8 @@ import Banner from "./banner";
 import Button from "./button";
 import Cards from "./cards";
 import Card from "./card";
+import Suggestion from "./suggestion";
+import Footer from "./footer";
 
 export {
   Button,
@@ -30,4 +32,6 @@ export {
   Banner,
   Cards,
   Card,
+  Suggestion,
+  Footer,
 };
