@@ -39,6 +39,11 @@
   .container {
     max-width: 72rem;
   }
+  .mobile-search {
+    z-index: 10000;
+    background: white;
+    padding-block: 1rem;
+  }
   .sr-only {
     position: absolute;
     width: 1px;

@@ -8,14 +8,12 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useRef } from "react";
 import { SearchBar, Sidebar } from "../index";
-import { useInView } from "framer-motion";
+
 import { NavLink } from "react-router-dom";
 import { useWindowSize } from "../../hooks/use-Window-Size";
 
 const Header = () => {
   const { width } = useWindowSize();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [saved, setSaved] = useState<boolean>(false);
   const [showSearchBar, setShowSearchBar] = useState<boolean>(false);
@@ -30,15 +28,10 @@ const Header = () => {
 
       <Sidebar closeSidebar={setSidebarOpen} open={sidebarOpen} />
 
-      <nav ref={ref} className="container lg:flex ">
+      <nav className="container lg:flex ">
         {showSearchBar ? (
           <div
-            style={{
-              transform: isInView ? "none" : "translateX(-200px)",
-              opacity: isInView ? 1 : 0,
-              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-            }}
-            className={` flex space-x-4 items-center `}
+            className={`fixed top-0 left-0 right-0 mobile-search shadow-md container flex space-x-4 items-center `}
           >
             <div onClick={() => setShowSearchBar(false)}>
               <AiOutlineClose size={24} />
