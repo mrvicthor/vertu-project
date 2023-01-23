@@ -12,7 +12,7 @@ const Footer = () => {
             className="object-cover lg:rounded-[12px]"
           />
         </div>
-        <article className="px-8 pt-8 space-y-4 text-[#ffffff] lg:pt-4 lg:px-0">
+        <article className="px-8 pt-12 lg:pt-4 pb-4 lg:pb-0 space-y-4 text-[#ffffff]  lg:px-0">
           <h5 className="font-bold text-3xl text-ellipsis">
             Electrifying performance <br /> with the BMW i4
           </h5>

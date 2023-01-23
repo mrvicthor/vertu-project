@@ -13,7 +13,7 @@ const Suggestion = () => {
             className="object-cover lg:rounded-[12px]"
           />
         </div>
-        <article className="px-8 pt-8 space-y-4 lg:place-self-start lg:px-0">
+        <article className="px-8 pt-12 lg:pt-8 pb-4 lg:pb-0 space-y-4 lg:place-self-start lg:px-0">
           <h4 className="font-bold text-3xl text-ellipsis">
             Explore the new BMW
             <br /> interior
