@@ -30,10 +30,7 @@ const Header = () => {
 
       <Sidebar closeSidebar={setSidebarOpen} open={sidebarOpen} />
 
-      <nav
-        ref={ref}
-        className="px-6 lg:max-w-[69rem] lg:mx-auto lg:flex lg:px-0"
-      >
+      <nav ref={ref} className="container lg:flex ">
         {showSearchBar ? (
           <div
             style={{
@@ -41,7 +38,7 @@ const Header = () => {
               opacity: isInView ? 1 : 0,
               transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
             }}
-            className={` flex gap-4 items-center `}
+            className={` flex space-x-4 items-center `}
           >
             <div onClick={() => setShowSearchBar(false)}>
               <AiOutlineClose size={24} />
@@ -49,31 +46,33 @@ const Header = () => {
             <SearchBar />
           </div>
         ) : (
-          <div className="flex justify-between items-center lg:gap-4">
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="hamburger block relative cursor-pointer md:hidden"
-            >
-              <span className="sr-only" aria-expanded="false">
-                Menu
-              </span>
-              <span className="bars"></span>
-              <span className="bars"></span>
-              <span className="bars"></span>
-            </button>
-            <NavLink
-              to="/"
-              style={({ isActive }) => {
-                return isActive ? { color: "#06C4CC" } : {};
-              }}
-              className="mr-auto w-[6rem] flex items-center overflow-hidden"
-            >
-              <img
-                src={VertuLogo}
-                alt="vertu-motors-logo"
-                className="object-cover"
-              />
-            </NavLink>
+          <div className="flex justify-between items-center lg:space-x-4 flex-1">
+            <div className="flex">
+              <button
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="hamburger block relative cursor-pointer md:hidden"
+              >
+                <span className="sr-only" aria-expanded="false">
+                  Menu
+                </span>
+                <span className="bars"></span>
+                <span className="bars"></span>
+                <span className="bars"></span>
+              </button>
+              <NavLink
+                to="/"
+                style={({ isActive }) => {
+                  return isActive ? { color: "#06C4CC" } : {};
+                }}
+                className="mr-auto w-[6rem] flex items-center overflow-hidden"
+              >
+                <img
+                  src={VertuLogo}
+                  alt="vertu-motors-logo"
+                  className="object-cover"
+                />
+              </NavLink>
+            </div>
             <div className="">
               <ul className="hidden lg:flex lg:gap-4">
                 <li className="nav-link">
@@ -146,7 +145,7 @@ const Header = () => {
             <div className="hidden lg:flex ml-4">
               <SearchBar style="py-1" icon={10} />
             </div>
-            <div className="flex gap-3 items-center overflow-hidden ">
+            <div className="flex gap-3 items-center overflow-hidden header-social">
               <div onClick={() => setShowSearchBar(true)} className="lg:hidden">
                 <span className="block">
                   <CiSearch size={24} />
@@ -182,11 +181,14 @@ const Header = () => {
                 </span>
                 <p className="hidden lg:block text-xs">login</p>
               </div>
-              <div className="cursor-pointer lg:hidden">
-                <span className="block lg:hidden">
-                  <SlPhone size={24} />
-                </span>
-              </div>
+              {width !== undefined &&
+                (width <= 768 ? (
+                  <div className={`cursor-pointer`}>
+                    <span className="block ">
+                      <SlPhone size={24} />
+                    </span>
+                  </div>
+                ) : null)}
             </div>
           </div>
         )}

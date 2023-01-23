@@ -10,6 +10,24 @@
   box-sizing: border-box;
 }
 
+.swiper-slide {
+  height: initial !important;
+}
+
+.swiper-button-next {
+  height: 2rem !important;
+  width: 2rem !important;
+  border-radius: 50%;
+  border: 1px solid #ccc !important;
+  background: white;
+  right: -5px;
+  z-index: 100 !important;
+}
+
+.swiper-button-next::after {
+  font-size: 1rem !important;
+}
+
 @layer base {
   body {
     font-family: "Livvic", sans-serif;
@@ -18,6 +36,9 @@
 }
 
 @layer components {
+  .container {
+    max-width: 72rem;
+  }
   .sr-only {
     position: absolute;
     width: 1px;
@@ -104,5 +125,9 @@
 
   .suggestion-text {
     max-width: 50ch;
+  }
+
+  .header-social {
+    flex: 0 0 auto;
   }
 }

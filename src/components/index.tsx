@@ -15,6 +15,10 @@ import Cards from "./cards";
 import Card from "./card";
 import Suggestion from "./suggestion";
 import Footer from "./footer";
+import DetailsPage from "./carDetail";
+import NotFound from "./notFound";
+import CarNotFound from "./carNotFound";
+import ScrollToTop from "./scrollToTop";
 
 export {
   Button,
@@ -33,5 +37,9 @@ export {
   Cards,
   Card,
   Suggestion,
+  NotFound,
   Footer,
+  DetailsPage,
+  CarNotFound,
+  ScrollToTop,
 };

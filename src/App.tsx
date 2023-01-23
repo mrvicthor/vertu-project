@@ -1,20 +1,27 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Header, Home, NewCars } from "./components";
+import {
+  Header,
+  Home,
+  NewCars,
+  NotFound,
+  DetailsPage,
+  ScrollToTop,
+} from "./components";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/newcars" element={<NewCars />} />
-        <Route path="/usedcars" element={<NewCars />} />
-      </Routes>
+      <ScrollToTop>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/newcars" element={<NewCars />} />
+          <Route path="/usedcars" element={<NewCars />} />
+          <Route path="/cars/:id" element={<DetailsPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ScrollToTop>
     </div>
   );
 }

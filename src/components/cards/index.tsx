@@ -1,102 +1,86 @@
-import m50Image from "../../assets/Trim-01.jpg";
-import mSportImage from "../../assets/Trim-02.jpg";
-import sportImage from "../../assets/Trim-03.jpg";
-import {
-  MdOutlineArrowBackIosNew,
-  MdOutlineArrowForwardIos,
-} from "react-icons/md";
-import { Card } from "../";
-import { useRef, useState } from "react";
-
-const cars = [
-  {
-    id: 1,
-    name: "M 50",
-    image: m50Image,
-    price: 65795,
-    features: [
-      "Velor floor mats",
-      "Sun protection glass",
-      "Automatic Stability Control (ASC)",
-      "Adaptive M suspension",
-      "Storage for wireless charging",
-      "Cruise control with brake assist",
-      "Automatic tailgate operation",
-    ],
-  },
-  {
-    id: 2,
-    name: "M Sport",
-    image: mSportImage,
-    price: 54980,
-    features: [
-      "Velor floor mats",
-      "Rain sensor including auto headlights activation",
-      "Automatic Stability Control (ASC)",
-      "Standard suspension",
-      "Electric Power Steering (EPS) with Servotronic",
-      "Automatic tailgate operation",
-    ],
-  },
-  {
-    id: 3,
-    name: "Sport",
-    image: sportImage,
-    price: 53480,
-    features: [
-      "Velor floor mats",
-      "Rain sensor including auto headlights activation",
-      "Automatic Stability Control (ASC)",
-      "Standard suspension",
-      "Electric Power Steering (EPS) with Servotronic",
-      "Automatic tailgate operation",
-    ],
-  },
-];
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { Card, CarNotFound } from "../";
+import { useRef, useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import { useAppSelector } from "../../redux/hooks";
 
 const Cards = () => {
+  const cars = useAppSelector((state) => state.cars.cars);
+  const searchQuery = useAppSelector((state) => state.cars.search);
+  let filteredCars;
+  filteredCars = cars.filter((car) =>
+    car.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   const cardRef = useRef<HTMLDivElement>(null);
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+
   const [isMoved, setIsMoved] = useState<boolean>(false);
-  const handleClick = (direction: string) => {
-    setIsMoved(true);
-    if (cardRef.current) {
-      const { scrollLeft, clientWidth } = cardRef.current;
 
-      const scrollTO =
-        direction === "left"
-          ? scrollLeft - clientWidth
-          : scrollLeft + clientWidth;
+  useEffect(() => {
+    console.log(cars);
+  }, []);
 
-      cardRef.current.scrollTo({ left: scrollTO, behavior: "smooth" });
-    }
-  };
+  if (searchQuery !== "" && filteredCars.length == 0) {
+    return (
+      <>
+        <CarNotFound />
+      </>
+    );
+  }
 
   return (
-    <section className="">
-      <div className="px-6 py-12 lg:max-w-[69rem] lg:mx-auto lg:px-0 lg:pr-6">
-        <h2 className="font-bold text-3xl">BMW i4 trims</h2>
-        <div className="lg:relative group">
-          {!isMoved ? null : (
-            <div
-              onClick={() => handleClick("left")}
-              className={`hidden lg:absolute top-[48%] bg-[#ffffff] h-[2rem] w-[2rem] rounded-full border buttons lg:flex lg:items-center -left-[.7rem] lg:justify-center cursor-pointer lg:opacity-0 group-hover:opacity-100 hover:text-[#15f4ee]`}
-            >
-              <MdOutlineArrowBackIosNew />
-            </div>
-          )}
-          <div
-            ref={cardRef}
-            className="mt-8 flex flex-col gap-6 lg:flex-row lg:h-[25rem] lg:flex-nowrap lg:gap-4 lg:overflow-x-auto lg:scrollbar-hide lg:px-2"
+    <section className="" id="cars">
+      <div className="py-12 container">
+        <h2 className="font-bold text-3xl text-ellipsis">BMW i4 trims</h2>
+        <div className="hidden lg:block lg:relative">
+          <Swiper
+            spaceBetween={15}
+            slidesPerView={3}
+            navigation={{
+              prevEl: navigationPrevRef.current,
+              nextEl: navigationNextRef.current,
+            }}
+            modules={[Autoplay, Navigation, Pagination]}
+            onInit={(swiper: any) => {
+              setTimeout(() => {
+                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                swiper.params.navigation.nextEl = navigationNextRef.current;
+                swiper.navigation.destroy();
+                swiper.navigation.init();
+                swiper.navigation.update();
+              });
+            }}
           >
+            {filteredCars.map((car) => (
+              <SwiperSlide key={car.id} className="py-4 px-1">
+                <Card car={car} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="flex items-center lg:container absolute top-[50%] z-10 pb-2">
+            <div
+              ref={navigationPrevRef}
+              className={`${isMoved ? "block" : "hidden"}`}
+            >
+              <button className="absolute -left-2 flex items-center justify-center h-6 w-6 rounded-full bg-[#ffffff] shadow-md">
+                <FiChevronLeft />
+              </button>
+            </div>
+            <div ref={navigationNextRef} onClick={() => setIsMoved(true)}>
+              <button className="absolute -right-2 flex items-center justify-center h-6 w-6 rounded-full bg-[#ffffff] shadow-md">
+                <FiChevronRight />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:relative group lg:hidden">
+          <div ref={cardRef} className="mt-8 flex flex-col space-y-6">
             {cars.map((car) => (
               <Card car={car} key={car.id} />
             ))}
-          </div>
-          <div
-            onClick={() => handleClick("right")}
-            className="hidden lg:absolute top-[48%] bg-[#ffffff] h-[2rem] w-[2rem] rounded-full buttons lg:flex lg:items-center -right-[.9rem] lg:justify-center cursor-pointer lg:opacity-0 group-hover:opacity-100 hover:text-[#15f4ee]"
-          >
-            <MdOutlineArrowForwardIos />
           </div>
         </div>
       </div>

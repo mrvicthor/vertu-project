@@ -17,7 +17,7 @@ const Sidebar = ({ closeSidebar, open }: IProps) => {
       <div className="px-6 py-3 grid grid-cols-1 divide-y">
         <div className="flex items-center justify-between py-4">
           <div />
-          <p className="font-semibold">Menu</p>
+          <p className="font-semibold text-ellipsis">Menu</p>
           <div>
             <AiOutlineClose size={24} onClick={() => closeSidebar(false)} />
           </div>
@@ -26,39 +26,39 @@ const Sidebar = ({ closeSidebar, open }: IProps) => {
           to="/newcars"
           className="flex justify-between items-center py-3"
         >
-          <p className="font-semibold">New Cars</p>
+          <p className="font-semibold text-ellipsis">New Cars</p>
           <MdOutlineKeyboardArrowDown />
         </NavLink>
         <NavLink
           to="/usedcars"
           className="flex justify-between items-center py-3"
         >
-          <p className="font-semibold">Used Cars</p>
+          <p className="font-semibold text-ellipsis">Used Cars</p>
           <MdOutlineKeyboardArrowDown />
         </NavLink>
         <NavLink
           to="/servicing"
           className="flex justify-between items-center py-3"
         >
-          <p className="font-semibold">Servicing</p>
+          <p className="font-semibold text-ellipsis">Servicing</p>
           <MdOutlineKeyboardArrowDown />
         </NavLink>
         <NavLink to="/vans" className="flex justify-between items-center py-3">
-          <p className="font-semibold">Vans</p>
+          <p className="font-semibold text-ellipsis">Vans</p>
           <MdOutlineKeyboardArrowDown />
         </NavLink>
         <NavLink
           to="/electriccars"
           className="flex justify-between items-center py-3"
         >
-          <p className="font-semibold">Electric Cars</p>
+          <p className="font-semibold text-ellipsis">Electric Cars</p>
           <MdOutlineKeyboardArrowDown />
         </NavLink>
         <NavLink
           to="/motability"
           className="flex justify-between items-center py-3"
         >
-          <p className="font-semibold">Motability</p>
+          <p className="font-semibold text-ellipsis">Motability</p>
           <MdOutlineKeyboardArrowDown />
         </NavLink>
         <NavLink
