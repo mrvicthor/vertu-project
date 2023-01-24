@@ -12,7 +12,7 @@ const Card = ({ car }: CardProps) => {
   return (
     <div
       onClick={() => navigate(`/cars/${id}`)}
-      className="rounded-[20px] border card px-6 pb-8 h-full cursor-pointer group/car lg:pt-4"
+      className="rounded-[20px] border card px-6 pb-8 h-full overflow-hidden cursor-pointer group/car lg:pt-4"
     >
       <img
         src={image}
