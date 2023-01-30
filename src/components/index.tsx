@@ -19,7 +19,7 @@ import DetailsPage from "./carDetail";
 import NotFound from "./notFound";
 import CarNotFound from "./carNotFound";
 import ScrollToTop from "./scrollToTop";
-
+import FilteredCars from "./filteredCars";
 export {
   Button,
   Header,
@@ -42,4 +42,5 @@ export {
   DetailsPage,
   CarNotFound,
   ScrollToTop,
+  FilteredCars,
 };

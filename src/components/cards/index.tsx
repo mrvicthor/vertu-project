@@ -1,5 +1,5 @@
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import { Card, CarNotFound } from "../";
+import { Card } from "../";
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper";
@@ -7,11 +7,7 @@ import { useAppSelector } from "../../redux/hooks";
 
 const Cards = () => {
   const cars = useAppSelector((state) => state.cars.cars);
-  const searchQuery = useAppSelector((state) => state.cars.search);
-  let filteredCars;
-  filteredCars = cars.filter((car) =>
-    car.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+
   const cardRef = useRef<HTMLDivElement>(null);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
@@ -21,14 +17,6 @@ const Cards = () => {
   useEffect(() => {
     console.log(cars);
   }, []);
-
-  if (searchQuery !== "" && filteredCars.length == 0) {
-    return (
-      <>
-        <CarNotFound />
-      </>
-    );
-  }
 
   return (
     <section className="" id="cars">
@@ -53,7 +41,7 @@ const Cards = () => {
               });
             }}
           >
-            {filteredCars.map((car) => (
+            {cars.map((car) => (
               <SwiperSlide key={car.id} className="py-4 px-1">
                 <Card car={car} />
               </SwiperSlide>
