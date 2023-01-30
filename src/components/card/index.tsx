@@ -17,7 +17,7 @@ const Card = ({ car }: CardProps) => {
       <img
         src={image}
         alt={name}
-        className="lg:h-[10rem] w-full object-cover group-hover/car:scale-110 duration-700"
+        className="lg:h-[10rem] w-full object-cover group-hover/car:scale-105 duration-700"
       />
       <article className="pt-4 lg:pt-0">
         <h3 className="font-bold text-3xl text-ellipsis lg:text-xl">{name}</h3>
