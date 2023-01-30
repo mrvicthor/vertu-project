@@ -1,5 +1,6 @@
 import { Car } from "../../model";
 import { convertCurrency } from "../../helpers/toPounds";
+import { useNavigate } from "react-router-dom";
 
 type FilteredProps = {
   results: Car[];
@@ -7,6 +8,7 @@ type FilteredProps = {
 };
 
 const FilteredCars = ({ results, searchQuery }: FilteredProps) => {
+  const navigate = useNavigate();
   if (searchQuery !== "" && results.length == 0) {
     return (
       <section className="absolute left-0 right-0 top-[6rem] shadow-md z-50  bg-[#ffffff] mx-auto w-[92%] rounded-lg px-8 py-4 lg:w-[25rem] lg:-right-[42rem]">
@@ -26,6 +28,7 @@ const FilteredCars = ({ results, searchQuery }: FilteredProps) => {
         <ul className="divide-y">
           {results.map((result) => (
             <li
+              onClick={() => navigate(`/cars/${result.id}`)}
               key={result.id}
               className="grid grid-cols-4 space-x-4 py-2 hover:shadow-md  rounded-md cursor-pointer px-2"
             >
